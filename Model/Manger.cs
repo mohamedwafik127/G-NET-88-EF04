@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NationalBank.Models
+namespace NationalBank.Model
 {
     public class Manager
     {
@@ -11,5 +11,6 @@ namespace NationalBank.Models
         public string Email { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
         public DateTime HireDate { get; set; }
+        public Branch? Branch { get; set; }
     }
 }

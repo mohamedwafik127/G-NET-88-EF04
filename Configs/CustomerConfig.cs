@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NationalBank.Model;
-using NationalBank.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,15 +13,15 @@ namespace NationalBank.Configs
         {
             builder.Property(c => c.FullName)
                    .IsRequired()
-                   .HasMaxLength(100);
+                   .HasMaxLength(50);
 
             builder.Property(c => c.Email)
                    .IsRequired()
-                   .HasMaxLength(100);
+                   .HasMaxLength(50);
 
             builder.Property(c => c.PhoneNumber)
                    .IsRequired()
-                   .HasMaxLength(20);
+                   .HasMaxLength(15);
 
             builder.Property(c => c.Address)
                    .IsRequired()
@@ -35,6 +34,7 @@ namespace NationalBank.Configs
                    .IsRequired();
 
             builder.Property(c => c.NationalId)
+                   .HasMaxLength(20)
                    .IsRequired();
         }
     }

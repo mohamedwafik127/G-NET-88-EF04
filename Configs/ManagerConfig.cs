@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using NationalBank.Models;
+using NationalBank.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace NationalBank.Configs
 {
-    internal class ManagerConfig : IEntityTypeConfiguration<Manager>
+    public class ManagerConfig : IEntityTypeConfiguration<Manager>
     {
         public void Configure(EntityTypeBuilder<Manager> builder)
         {
@@ -25,6 +25,30 @@ namespace NationalBank.Configs
 
             builder.Property(m => m.HireDate)
                    .IsRequired();
+
+            builder.HasOne(m => m.Branch)
+                   .WithOne(m => m.Manager)
+                   .HasForeignKey<Branch>(m => m.ManagerId)
+                   .IsRequired()
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasData(
+            new Manager
+            {
+                Id = 1,
+                FullName = "Hassan Mahmoud",
+                Email = "hassan.mahmoud@nationalbank.com",
+                PhoneNumber = "01011111111",
+                HireDate = new DateTime(2018, 3, 1)
+            },
+            new Manager
+            {
+                Id = 2,
+                FullName = "Salma Adel",
+                Email = "salma.adel@nationalbank.com",
+                PhoneNumber = "01022222222",
+                HireDate = new DateTime(2020, 9, 15)
+            });
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using NationalBank.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,6 +13,7 @@ namespace NationalBank.Model
         public string Address { get; set; } = null!;
         public DateTime DateOfBirth { get; set; }
         public CustomerType CustomerType { get; set; }
-        public int NationalId { get; set; }
+        public string NationalId { get; set; } = null!;
+        public ICollection<CustomerAccount> CustomerAccounts { get; set; } = new List<CustomerAccount>();
     }
 }
